@@ -3,7 +3,7 @@
     "templates": {
         "prompt_template_id" : {
             "prompt_id": "prompt_template_id",
-            "prompt_template": "The following is a {{type}} prompt. {{type}} is a {{description}}. {{type}} is used for {{usage}}. {{type}} is a {{category}}.",
+            "prompt_template": "The following is a {type} prompt. {type} is a {description}. {type} is used for {usage}. {type} is a {category}.",
             "variables": [
                 {
                     "name": "type",
@@ -25,7 +25,7 @@
         },
         "better_template_id" : {
             "prompt_id": "better_template_id",
-            "prompt_template": "The following is a {{type}} prompt. {{type}} is a {{description}}. ",
+            "prompt_template": "The following is a {type} prompt. {type} is a {description}. ",
             "variables": [
                 {
                     "name": "type",

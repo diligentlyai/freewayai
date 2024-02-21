@@ -3,7 +3,7 @@
     "templates": {
         "get_user_info_id": {
             "query_template_id": "get_user_info_id",
-            "search_query_template": "My friend {{name}} has this email: {{email}} and this phone: {{phone}}",
+            "search_query_template": "My friend {name} has this email: {email} and this phone: {phone}",
             "result_count": 5,
             "variables": [
                 {
