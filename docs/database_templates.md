@@ -111,7 +111,7 @@
   <tbody>
     <tr>
       <th>Description</th>
-      <td colspan="2">The template to be filled out and sent to the database.</td>
+      <td colspan="2">The template to be filled out and sent to the database, with keyword variables in curly brackets ({}).</td>
     </tr>
     <tr><th>Type</th><td colspan="2">String</td></tr>
     <tr>
@@ -236,7 +236,7 @@
                         },
                         "search_query_template": {
                             "type": "string",
-                            "description": "The template to be filled out and sent to the database."
+                            "description": "The template to be filled out and sent to the database, with keyword variables in curly brackets ({})."
                         },
                         "result_count": {
                             "type": "integer",
