@@ -1,0 +1,17 @@
+{
+    "_comment": "This is a spec for a data model for user inputs to a system.",
+    "inputs": {
+        "input_1" : {
+            "input_id": "input_1",
+            "description": "optional description of the input"
+        },
+        "input_2" : {
+            "input_id": "input_2",
+            "description": "optional description of the input"
+        },
+        "input_3" : {
+            "input_id": "input_3",
+            "description": "optional"
+        }
+    }
+}

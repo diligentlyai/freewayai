@@ -1,0 +1,41 @@
+{
+    "_comment": "This data structure is a spec for a prompt template (no real data/values) that will go to a large language model.",
+    "templates": {
+        "prompt_template_id" : {
+            "prompt_id": "prompt_template_id",
+            "prompt_template": "The following is a {{type}} prompt. {{type}} is a {{description}}. {{type}} is used for {{usage}}. {{type}} is a {{category}}.",
+            "variables": [
+                {
+                    "name": "type",
+                    "source": "user"
+                },
+                {
+                    "name": "description",
+                    "source": "llm"
+                },
+                {
+                    "name": "usage",
+                    "source": "database"
+                },
+                {
+                    "name": "category",
+                    "source": "user"
+                }
+            ]
+        },
+        "better_template_id" : {
+            "prompt_id": "better_template_id",
+            "prompt_template": "The following is a {{type}} prompt. {{type}} is a {{description}}. ",
+            "variables": [
+                {
+                    "name": "type",
+                    "source": "llm"
+                },
+                {
+                    "name": "description",
+                    "source": "user"
+                }
+            ]
+        }
+    }
+}

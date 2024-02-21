@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/diligentlyai/freewayai/schema/system_templates.json",
+  "title": "System Templates",
+  "description": "A list of system templates",
+  "type": "object",
+  "properties": {
+    "_comment": {
+      "type": "string",
+      "description": "An optional comment"
+    },
+    "start_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "terminating_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "variable": {
+                "type": "string"
+              }
+            },
+            "required": ["id", "variable"]
+          }
+        },
+        "required": ["from", "to"]
+      }
+    }
+  },
+  "required": ["start_nodes", "terminating_nodes", "connections"]
+}
