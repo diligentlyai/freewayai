@@ -62,25 +62,7 @@
           "description": "The data about your prompt template"
         }
       },
-      "required": ["prompt_id"],
-      "oneOf": [
-        {
-          "required": ["prompt_template"]
-        },
-        {
-          "required": ["messages"]
-        },
-        {
-          "anyOf": [
-            {
-              "required": ["prompt_template"]
-            },
-            {
-              "required": ["messages"]
-            }
-          ]
-        }
-      ]
+      "required": ["prompt_id"]
     }
   }
 }
