@@ -22,7 +22,24 @@
             },
             "prompt_template": {
               "type": "string",
-              "description": "The prompt template itself, with keyword variables in curly brackets ({})"
+              "description": "The prompt template itself, with keyword variables in curly brackets ({}). Optional, but only if messages is present."
+            },
+            "messages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "description": "The role of who sent that message (user OR assistant)"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "The content of the message, with keyword variables in curly brackets ({})."
+                  }
+                }
+              },
+              "description": "The messages that will be formatted and sent. This is generally used for few-shot prompting. Optional, but only if prompt_template is present."
             },
             "variables": {
               "type": "array",
@@ -45,7 +62,25 @@
           "description": "The data about your prompt template"
         }
       },
-      "required": ["prompt_id", "prompt_template"]
+      "required": ["prompt_id"],
+      "oneOf": [
+        {
+          "required": ["prompt_template"]
+        },
+        {
+          "required": ["messages"]
+        },
+        {
+          "anyOf": [
+            {
+              "required": ["prompt_template"]
+            },
+            {
+              "required": ["messages"]
+            }
+          ]
+        }
+      ]
     }
   }
 }
