@@ -1,8 +1,8 @@
 
 
-# Prompt Templates
+# Database Templates
 
-<p>A list of prompt templates</p>
+<p>A list of database query templates</p>
 
 <table>
 <tbody>
@@ -215,8 +215,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://github.com/diligentlyai/freewayai/schema/database_templates.json",
-    "title": "Prompt Templates",
-    "description": "A list of prompt templates",
+    "title": "Database Templates",
+    "description": "A list of database query templates",
     "type": "object",
     "properties": {
         "_comment": {
