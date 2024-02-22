@@ -95,7 +95,7 @@
     <tr><th>Type</th><td colspan="2">String</td></tr>
     <tr>
       <th>Required</th>
-      <td colspan="2">No</td>
+      <td colspan="2">Yes</td>
     </tr>
     
   </tbody>
@@ -307,12 +307,12 @@
                             "description": "The variables in your prompt template that will be replaced"
                         }
                     },
+                    "required": [
+                        "prompt_id"
+                    ],
                     "description": "The data about your prompt template"
                 }
-            },
-            "required": [
-                "prompt_id"
-            ]
+            }
         }
     }
 }

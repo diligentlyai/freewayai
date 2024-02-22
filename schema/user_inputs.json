@@ -25,6 +25,7 @@
               "description": "A description of the input coming through this id"
             }
           },
+          "required": ["input_id"],
           "description": "The data about this input"
         }
       }

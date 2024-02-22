@@ -95,7 +95,7 @@
     <tr><th>Type</th><td colspan="2">String</td></tr>
     <tr>
       <th>Required</th>
-      <td colspan="2">No</td>
+      <td colspan="2">Yes</td>
     </tr>
     
   </tbody>
@@ -163,6 +163,9 @@
                             "description": "A description of the input coming through this id"
                         }
                     },
+                    "required": [
+                        "input_id"
+                    ],
                     "description": "The data about this input"
                 }
             }

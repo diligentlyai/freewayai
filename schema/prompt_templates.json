@@ -59,10 +59,10 @@
               "description": "The variables in your prompt template that will be replaced"
             }
           },
+          "required": ["prompt_id"],
           "description": "The data about your prompt template"
         }
-      },
-      "required": ["prompt_id"]
+      }
     }
   }
 }
