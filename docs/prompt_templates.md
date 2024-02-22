@@ -13,7 +13,7 @@
 
 ## Properties
 
-<table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#_comment">_comment</a></td><td>String</td></tr><tr><th rowspan="2">templates</th><td rowspan="2">One of:</td><td>Object</td></tr><tr><td>Object</td></tr></tbody></table>
+<table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#_comment">_comment</a></td><td>String</td></tr><tr><td colspan="2"><a href="#templates">templates</a></td><td>Object</td></tr></tbody></table>
 
 
 
@@ -50,7 +50,7 @@
       <th>Description</th>
       <td colspan="2">The object containing all templates of this prompt system</td>
     </tr>
-    <tr><tr><th rowspan="2">Type</th><td rowspan="2">One of:</td><td>Object</td></tr><tr><td>Object</td></tr></tr>
+    <tr><th>Type</th><td colspan="2">Object</td></tr>
     <tr>
       <th>Required</th>
       <td colspan="2">No</td>
@@ -60,7 +60,7 @@
 </table>
 
 ### Properties
-  <table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#templates<your_prompt_template_id>"><your_prompt_template_id></a></td><td>Object</td></tr><tr><th colspan="2" rowspan="2">One of:</th><th></th></tr><tr><th></th></tr></tbody></table>
+  <table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#templates<your_prompt_template_id>"><your_prompt_template_id></a></td><td>Object</td></tr></tbody></table>
 
 
 ### templates.&lt;your_prompt_template_id&gt;
@@ -236,32 +236,6 @@
 
 
 
-### templates.0
-
-
-<table class="jssd-property-table">
-  <tbody>
-    
-    
-  </tbody>
-</table>
-
-
-
-
-### templates.1
-
-
-<table class="jssd-property-table">
-  <tbody>
-    
-    
-  </tbody>
-</table>
-
-
-
-
 
 
 
@@ -338,18 +312,6 @@
             },
             "required": [
                 "prompt_id"
-            ],
-            "oneOf": [
-                {
-                    "required": [
-                        "prompt_template"
-                    ]
-                },
-                {
-                    "required": [
-                        "messages"
-                    ]
-                }
             ]
         }
     }
