@@ -3,7 +3,7 @@
 #### Welcome to FreewayAI: a new open-standard specification for LLM-backed systems  
 Freeway is meant to provide a simple, flexible, enxtensible and lightweight standard for managing prompt templates, database query templates, user input points, and LLM-backed system diagrams. 
 
-##### The units of FreewayAI  
+#### The units of FreewayAI  
 The unit elements of Freeway are as follows:  
 - Prompt Templates  
 - Database Query Templates  
