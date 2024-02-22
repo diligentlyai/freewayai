@@ -1,6 +1,6 @@
 # FreewayAI
 
-#### Welcome to FreewayAI the new open standard specification for LLM-backed systems  
+#### Welcome to FreewayAI: a new open-standard specification for LLM-backed systems  
 Freeway is meant to provide a simple, flexible, enxtensible and lightweight standard for managing prompt templates, database query templates, user input points, and LLM-backed system diagrams. 
 
 ##### The units of FreewayAI  
