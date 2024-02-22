@@ -13,7 +13,7 @@
 
 ## Properties
 
-<table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#_comment">_comment</a></td><td>String</td></tr><tr><td colspan="2"><a href="#templates">templates</a></td><td>Object</td></tr></tbody></table>
+<table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#_comment">_comment</a></td><td>String</td></tr><tr><th rowspan="3">templates</th><td rowspan="3">One of:</td><td>Object</td></tr><tr><td>Object</td></tr><tr><td>Object</td></tr></tbody></table>
 
 
 
@@ -50,7 +50,7 @@
       <th>Description</th>
       <td colspan="2">The object containing all templates of this prompt system</td>
     </tr>
-    <tr><th>Type</th><td colspan="2">Object</td></tr>
+    <tr><tr><th rowspan="3">Type</th><td rowspan="3">One of:</td><td>Object</td></tr><tr><td>Object</td></tr><tr><td>Object</td></tr></tr>
     <tr>
       <th>Required</th>
       <td colspan="2">No</td>
@@ -60,7 +60,7 @@
 </table>
 
 ### Properties
-  <table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#templates<your_prompt_template_id>"><your_prompt_template_id></a></td><td>Object</td></tr></tbody></table>
+  <table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#templates<your_prompt_template_id>"><your_prompt_template_id></a></td><td>Object</td></tr><tr><th colspan="2" rowspan="3">One of:</th><th></th></tr><tr><th></th></tr><tr><th></th></tr></tbody></table>
 
 
 ### templates.&lt;your_prompt_template_id&gt;
@@ -111,7 +111,7 @@
   <tbody>
     <tr>
       <th>Description</th>
-      <td colspan="2">The prompt template itself, with keyword variables in curly brackets ({})</td>
+      <td colspan="2">The prompt template itself, with keyword variables in curly brackets ({}). Optional, but only if messages is present.</td>
     </tr>
     <tr><th>Type</th><td colspan="2">String</td></tr>
     <tr>
@@ -121,6 +121,61 @@
     
   </tbody>
 </table>
+
+
+
+
+### templates.&lt;your_prompt_template_id&gt;.messages
+
+
+<table class="jssd-property-table">
+  <tbody>
+    <tr>
+      <th>Description</th>
+      <td colspan="2">The messages that will be formatted and sent. This is generally used for few-shot prompting. Optional, but only if prompt_template is present.</td>
+    </tr>
+    <tr><th>Type</th><td colspan="2">Array</td></tr>
+    <tr>
+      <th>Required</th>
+      <td colspan="2">No</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+### templates.&lt;your_prompt_template_id&gt;.messages.role
+
+
+<table class="jssd-property-table">
+  <tbody>
+    <tr>
+      <th>Description</th>
+      <td colspan="2">The role of who sent that message (user OR assistant)</td>
+    </tr>
+    <tr><th>Type</th><td colspan="2">String</td></tr>
+    
+  </tbody>
+</table>
+
+
+
+
+### templates.&lt;your_prompt_template_id&gt;.messages.content
+
+
+<table class="jssd-property-table">
+  <tbody>
+    <tr>
+      <th>Description</th>
+      <td colspan="2">The content of the message, with keyword variables in curly brackets ({}).</td>
+    </tr>
+    <tr><th>Type</th><td colspan="2">String</td></tr>
+    
+  </tbody>
+</table>
+
 
 
 
@@ -181,6 +236,45 @@
 
 
 
+### templates.0
+
+
+<table class="jssd-property-table">
+  <tbody>
+    
+    
+  </tbody>
+</table>
+
+
+
+
+### templates.1
+
+
+<table class="jssd-property-table">
+  <tbody>
+    
+    
+  </tbody>
+</table>
+
+
+
+
+### templates.2
+
+
+<table class="jssd-property-table">
+  <tbody>
+    
+    
+  </tbody>
+</table>
+
+
+
+
 
 
 
@@ -215,7 +309,24 @@
                         },
                         "prompt_template": {
                             "type": "string",
-                            "description": "The prompt template itself, with keyword variables in curly brackets ({})"
+                            "description": "The prompt template itself, with keyword variables in curly brackets ({}). Optional, but only if messages is present."
+                        },
+                        "messages": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "role": {
+                                        "type": "string",
+                                        "description": "The role of who sent that message (user OR assistant)"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "description": "The content of the message, with keyword variables in curly brackets ({})."
+                                    }
+                                }
+                            },
+                            "description": "The messages that will be formatted and sent. This is generally used for few-shot prompting. Optional, but only if prompt_template is present."
                         },
                         "variables": {
                             "type": "array",
@@ -239,8 +350,33 @@
                 }
             },
             "required": [
-                "prompt_id",
-                "prompt_template"
+                "prompt_id"
+            ],
+            "oneOf": [
+                {
+                    "required": [
+                        "prompt_template"
+                    ]
+                },
+                {
+                    "required": [
+                        "messages"
+                    ]
+                },
+                {
+                    "anyOf": [
+                        {
+                            "required": [
+                                "prompt_template"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "messages"
+                            ]
+                        }
+                    ]
+                }
             ]
         }
     }
