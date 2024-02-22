@@ -125,7 +125,7 @@
 
 
 
-### templates.&lt;your_prompt_template_id&gt;.messages
+### templates.&lt;your_prompt_template_id&gt;.message
 
 
 <table class="jssd-property-table">
