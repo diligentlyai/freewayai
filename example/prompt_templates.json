@@ -33,7 +33,7 @@
                 },
                 {
                     "content": "This is a message that was sent to the user.",
-                    "role": "assistatnt"
+                    "role": "assistant"
                 },
                 {
                     "content": "This is a message that was sent to the assistant. {description} is a {type}.",
@@ -64,7 +64,7 @@
                 },
                 {
                     "content": "This is a message that was sent to the user.",
-                    "role": "assistatnt"
+                    "role": "assistant"
                 },
                 {
                     "content": "This is a message that was sent to the assistant. {description} is a {type}.",
