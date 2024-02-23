@@ -1,0 +1,76 @@
+{
+    "templates": {
+        "profile_extraction_prompt" : {
+            "prompt_id": "profile_extraction_prompt",
+            "prompt_template": "You are going to see a raw text version of a linkedin profile. Your task is to extract the following information from the profile: Previous jobs. Current job. Education. Skills. Here is the raw profile: {raw_profile}. Information: ",
+            "variables": [
+                {
+                    "name": "raw_profile",
+                    "source": "user"
+                }
+            ]
+        },
+        "messages_to_description_prompt" : {
+            "prompt_id": "messages_to_description_prompt",
+            "prompt_template": "Your task is to describe how to write a good message to a prospective customer, based on the example messages listed here: {messages}. Description: ",
+            "variables": [
+                {
+                    "name": "messages",
+                    "source": "database"
+                }
+            ]
+        },
+        "write_new_message_prompt" : {
+            "prompt_id": "write_new_message_prompt",
+            "prompt_template": "{new_profile}",
+            "messages": [
+                {
+                    "content": "Your job is to write a new message to a prospective customer. Here is a description of how to write a good message: {description}. I will provide you with the profile of the prospective customer. You can use the profile to write a message that is tailored to the customer. ",
+                    "role": "system"
+                },
+                {
+                    "content": "{profile1}",
+                    "role": "user"
+                },
+                {
+                    "content": "{message1}",
+                    "role": "assistant"
+                },
+                {
+                    "content": "{profile2}",
+                    "role": "user"
+                },
+                {
+                    "content": "{message2}",
+                    "role": "assistant"
+                }
+            ],
+            "variables": [
+                {
+                    "name": "new_profile",
+                    "source": "llm"
+                },
+                {
+                    "name": "description",
+                    "source": "llm"
+                },
+                {
+                    "name": "profile1",
+                    "source": "database"
+                },
+                {
+                    "name": "message1",
+                    "source": "database"
+                },
+                {
+                    "name": "profile2",
+                    "source": "database"
+                },
+                {
+                    "name": "message2",
+                    "source": "database"
+                }
+            ]
+        }
+    }
+}

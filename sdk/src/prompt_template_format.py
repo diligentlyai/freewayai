@@ -1,4 +1,5 @@
 from utilities import _read_prompt_from_system_and_id, _format_template_string
+from formatted_messages import Messages
 
 # FreewayAI is property of DiligentlyAI, Inc. and is used under an MIT license.
 # by Ben Parfitt, Feb 2024
@@ -17,9 +18,9 @@ def _format_prompt(prompt, **kwargs):
         if len(messages):
             messages.append(msg)
         else:
-            return msg["content"]
+            messages = [msg]
         
-    return messages
+    return Messages(messages)
 
 def _format_messages(prompt, messages, **kwargs):
 

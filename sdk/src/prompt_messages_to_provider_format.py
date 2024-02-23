@@ -1,5 +1,5 @@
 
-def _convert_messages_to_format(messages, provider_name):
+def convert_messages_to_format(messages, provider_name):
     # This function will convert the messages to the format that the provider requires.
     # The provider_name is the name of the provider that the messages are being converted to.
     # The messages are the messages that are being converted.
@@ -23,14 +23,14 @@ def _convert_messages_to_format(messages, provider_name):
     elif provider_name == "anthropic_completions":
         human_prefix = "\n\nHuman: "
         assistant_prefix = "\n\nAssistant: "
-        msg = messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix)
+        msg = _messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix)
         
         return msg
         
     elif provider_name == "cohere":
         human_prefix = "\nHuman: "
         assistant_prefix = "\nAssistant: "
-        msg = messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix)
+        msg = _messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix)
         
         return msg
     
@@ -59,7 +59,7 @@ def _convert_messages_to_format(messages, provider_name):
 
         human_prefix = B_INST
         assistant_prefix = E_INST
-        msg = messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix)
+        msg = _messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix)
         msg = msg + E_INST
 
         return msg
@@ -67,7 +67,7 @@ def _convert_messages_to_format(messages, provider_name):
     else:
         raise ValueError(f"Invalid provider name {provider_name}")
 
-def messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix):
+def _messages_to_string_with_prefixes(messages, human_prefix, assistant_prefix):
     msg = ""
 
     for message in messages:

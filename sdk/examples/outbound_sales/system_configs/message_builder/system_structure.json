@@ -1,0 +1,78 @@
+{
+    "start_nodes": [
+        "user_profile_raw_text"
+    ],
+    "terminating_nodes": [
+        "write_new_message_prompt"
+    ],
+    "inner_nodes": [
+        "profile_extraction_prompt",
+        "get_similar_profile_id",
+        "messages_to_description_prompt"
+    ],
+    "connections": [
+            {
+                "from": "user_profile_raw_text",
+                "to": {
+                    "id": "profile_extraction_prompt",
+                    "variable": "raw_profile"
+                }
+            },
+            {
+                "from": "user_profile_raw_text",
+                "to": {
+                    "id": "get_similar_profile_id",
+                    "variable": "new_profile"
+                }
+            },
+            {
+                "from": "get_similar_profile_id",
+                "to": {
+                    "id": "messages_to_description_prompt",
+                    "variable": "messages"
+                }
+            },
+            {
+                "from": "messages_to_description_prompt",
+                "to": {
+                    "id": "write_new_message_prompt",
+                    "variable": "description"
+                }
+            },
+            {
+                "from": "get_similar_profile_id",
+                "to": {
+                    "id": "write_new_message_prompt",
+                    "variable": "profile1"
+                }
+            },
+            {
+                "from": "get_similar_profile_id",
+                "to": {
+                    "id": "write_new_message_prompt",
+                    "variable": "profile2"
+                }
+            },
+            {
+                "from": "get_similar_profile_id",
+                "to": {
+                    "id": "write_new_message_prompt",
+                    "variable": "message1"
+                }
+            },
+            {
+                "from": "get_similar_profile_id",
+                "to": {
+                    "id": "write_new_message_prompt",
+                    "variable": "message2"
+                }
+            },
+            {
+                "from": "profile_extraction_prompt",
+                "to": {
+                    "id": "write_new_message_prompt",
+                    "variable": "new_profile"
+                }
+            }
+        ]
+    }
