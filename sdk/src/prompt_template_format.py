@@ -1,5 +1,5 @@
-from utilities import _read_prompt_from_system_and_id, _format_template_string
-from formatted_messages import Messages
+from .utilities import _read_prompt_from_system_and_id, _format_template_string
+from .prompt_formatted import Prompt_Formatted
 
 # FreewayAI is property of DiligentlyAI, Inc. and is used under an MIT license.
 # by Ben Parfitt, Feb 2024
@@ -20,7 +20,7 @@ def _format_prompt(prompt, **kwargs):
         else:
             messages = [msg]
         
-    return Messages(messages)
+    return Prompt_Formatted(messages)
 
 def _format_messages(prompt, messages, **kwargs):
 
@@ -29,8 +29,8 @@ def _format_messages(prompt, messages, **kwargs):
 
     return messages
 
-def read_and_format_prompt(system_id, prompt_id, **kwargs):
-    prompt = _read_prompt_from_system_and_id(system_id, prompt_id)
+def read_and_format_prompt(system_id, systems_location, prompt_id, **kwargs):
+    prompt = _read_prompt_from_system_and_id(system_id, systems_location, prompt_id)
     return _format_prompt(prompt, **kwargs)
 
 def main():
