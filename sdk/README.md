@@ -14,6 +14,12 @@ We know that systems built on LLMs are full of json parsing, for loops, if state
 
 We also believe that prompt templates should be managed out of code, where they can be edited on their own lifecycle.
 
+## Installation
+
+```bash
+pip install freewayai
+```
+
 
 ## Usage
 

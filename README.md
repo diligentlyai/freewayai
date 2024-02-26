@@ -1,7 +1,7 @@
 # FreewayAI
 
 #### Welcome to FreewayAI: a new open-standard specification for LLM-backed systems  
-Freeway is meant to provide a simple, flexible, enxtensible and lightweight standard for managing prompt templates, database query templates, user input points, and LLM-backed system diagrams. 
+Freeway is meant to provide a simple, flexible, extensible and lightweight standard for managing prompt templates, database query templates, user input points, and LLM-backed system diagrams. 
 
 #### The units of FreewayAI  
 The unit elements of Freeway are as follows:  
@@ -16,7 +16,10 @@ We also believe that prompt templates should be managed out of code, where they 
 
 ## Usage
 
-#### The `examples` directory contains examples of how to interact with this format to get formatted prompts.
+There is an open source python sdk that can be installed from PyPi:
 
-The expected directory structure is as follows:   
-`<location of prompt systems>/<system_id>/prompt_templates.json`
+```bash
+pip install freewayai
+```
+
+In the [sdk/examples/outbound_sales](https://github.com/diligentlyai/freewayai/tree/main/sdk/examples/outbound_sales) folder there is a reference implementation using the python sdk and the [FreewayAI spec](https://github.com/diligentlyai/freewayai/tree/main/sdk/examples/outbound_sales/system_configs/message_builder) to build a sample application.
