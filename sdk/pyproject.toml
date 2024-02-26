@@ -1,0 +1,30 @@
+[project]
+name = "freewayai"
+version = "0.0.1"
+dependencies = []
+authors = [
+  { name="Ben Parfitt", email="ben@diligently.ai" },
+  { name="Michael Cox", email="michael@diligently.ai" },
+]
+description = "A library for building and deploying machine learning models"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/diligentlyai/freewayai"
+Issues = "https://github.com/diligentlyai/freewayai/issues"
+
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["freewayai*"]
+exclude = ["freewayai.tests*"]

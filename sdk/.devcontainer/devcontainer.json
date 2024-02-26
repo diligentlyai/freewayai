@@ -1,0 +1,12 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "tamasfe.even-better-toml",
+        "ms-python.python",
+        "ms-python.debugpy"
+      ]
+    }
+  }
+}

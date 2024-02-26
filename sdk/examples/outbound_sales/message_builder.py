@@ -1,5 +1,5 @@
 import json
-from src.llm_system import LLMSystem
+from freewayai import LLMSystem
 from sys_utilities import open_ai_chat_call, open_ai_embedding_call, make_faiss_index, search_faiss_index
 
 NEW_PROFILE_LOCATION = "data/new_profile_data.json"
