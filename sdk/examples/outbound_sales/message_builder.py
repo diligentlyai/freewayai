@@ -49,7 +49,22 @@ def get_new_message(name: str) -> str:
     profile2 = top_2_sim_profiles_and_messages[1]["profile"]
     message1 = top_2_sim_profiles_and_messages[0]["message"]
     message2 = top_2_sim_profiles_and_messages[1]["message"]
-    new_message_prompt = llm_system.get_formatted_prompt("write_new_message_prompt", profile1=profile1, profile2=profile2, message1=message1, message2=message2, description=message_description, new_profile=extracted_profile).to_openai()
+    new_message_prompt = llm_system.get_formatted_prompt("write_new_message_prompt", profile1=profile1, profile2=profile2, message1=message1, message2=message2, description=message_description, new_profile=extracted_profile)
+
+    # I want to add another few-shot example to the prompt as additional context (and to demo SDK functionality)
+    added_context = [
+        {
+            "role": "user",
+            "content": similar_profiles_and_messages[2]["profile"]
+        },
+        {
+            "role": "assistant",
+            "content": similar_profiles_and_messages[2]["message"]
+        }
+    ]
+    new_message_prompt = new_message_prompt.add_context(added_context)
+    new_message_prompt = new_message_prompt.add_context("Replace 'Paddle' with 'FamilyFunLand'. ").to_openai()
+
     new_message = open_ai_chat_call(new_message_prompt)
 
     return new_message

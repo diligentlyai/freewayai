@@ -16,6 +16,27 @@ class Prompt_Formatted:
     def __list__(self):
         return self.messages
     
+    def add_context(self, context):
+
+        # Check the type of context for either string or list
+        if type(context) == str:
+            context = [{
+                "content": context,
+                "role": "user"
+            }]
+            
+        if type(context) != list:
+            raise ValueError("Context must be either a string or list of strings")
+
+        if len(self.messages) == 0:
+            self.messages = context
+        elif self.messages[0]["role"] == "system":
+            self.messages = self.messages[:1] + context + self.messages[1:]
+        else:
+            self.messages = context + self.messages
+
+        return self
+
     def to_openai(self):
         return convert_messages_to_format(self.messages, "openai")
     
