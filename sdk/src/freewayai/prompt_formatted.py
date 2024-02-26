@@ -26,7 +26,7 @@ class Prompt_Formatted:
             }]
             
         if type(context) != list:
-            raise ValueError("Context must be either a string or list of strings")
+            raise ValueError("Context must be either a string or list of message objects in OpenAI format")
 
         if len(self.messages) == 0:
             self.messages = context
