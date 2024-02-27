@@ -45,7 +45,7 @@ sys_utilities.py
 
 ### Prompt Templates
 
-The `/system_configs/message_builder` folder contains the system definitions in the format of the [FreewayAI spec](https://github.com/diligentlyai/freewayai/blob/main/docs/index.md).
+The `/system_configs/chatbot` folder contains the system definitions in the format of the [FreewayAI spec](https://github.com/diligentlyai/freewayai/blob/main/docs/index.md).
 
 ### Data
 
