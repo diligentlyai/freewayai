@@ -49,7 +49,7 @@ The `/system_configs/chatbot` folder contains the system definitions in the form
 
 ### Data
 
-This sample application has a `data/` folder with fake LinkedIn profiles which are fed as variables to the prompts, and used to populate the in-memory vector database.
+This sample application has a `data/` folder with information about bread that is used to populate the in-memory vector database.
 
 ### Logging
 
