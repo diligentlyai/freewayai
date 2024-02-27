@@ -23,7 +23,7 @@ def answer_query() -> str:
     query = input("What is your question? ")
 
     # Confirm that the question is clear
-    question = llm_system.get_formatted_prompt("clarity_check", query=query).to_openai()
+    question = llm_system.get_formatted_prompt("clarity_check", dict(query=query)).to_openai()
     clarity = open_ai_chat_call(question, "chatbot", "clarity_check", log_location="chatbot_log.txt")
 
     if "clear" not in clarity.lower():
@@ -35,7 +35,7 @@ def answer_query() -> str:
 
     while len(extracted_data) == 0:
         # Write a follow-up question to ask
-        follow_up = llm_system.get_formatted_prompt("follow_up_question", query=query).to_openai()
+        follow_up = llm_system.get_formatted_prompt("follow_up_question", dict(query=query)).to_openai()
         follow_up = open_ai_chat_call(follow_up, "chatbot", "follow_up_question", log_location="chatbot_log.txt")
         query += input(f"{follow_up} ")
 
@@ -43,11 +43,11 @@ def answer_query() -> str:
         extracted_data = get_related_data(llm_system, knowledge_base_data, vector_db, query)
 
     # Now that we have the extracted data, we can answer the query using the extracted data
-    answer = llm_system.get_formatted_prompt("query_answer_with_info", query=query, info="; ".join(extracted_data)).to_openai()
+    answer = llm_system.get_formatted_prompt("query_answer_with_info", dict(query=query, info="; ".join(extracted_data))).to_openai()
     return open_ai_chat_call(answer, "chatbot", "query_answer_with_info", log_location="chatbot_log.txt")
 
 def get_related_data(llm_system: LLMSystem, knowledge_base_data, vector_db, query):
-    database_query = llm_system.get_formatted_query("get_related_data", query=query)
+    database_query = llm_system.get_formatted_query("get_related_data", dict(query=query))
     related_data = search_faiss_index(vector_db, knowledge_base_data, database_query, \
                                       "chatbot", "get_related_data", log_location="chatbot_log.txt")
 
@@ -56,7 +56,7 @@ def get_related_data(llm_system: LLMSystem, knowledge_base_data, vector_db, quer
     for entry in related_data:
         to_check = entry["content"]
         
-        extraction_prompt = llm_system.get_formatted_prompt("information_extraction", query=query, text=to_check).to_openai()
+        extraction_prompt = llm_system.get_formatted_prompt("information_extraction", dict(query=query, text=to_check)).to_openai()
         extraction = open_ai_chat_call(extraction_prompt, "chatbot", "information_extraction", log_location="chatbot_log.txt")
         if "not present" in extraction.lower():
             continue
