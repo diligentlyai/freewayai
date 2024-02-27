@@ -4,15 +4,15 @@ from .prompt_formatted import Prompt_Formatted
 # FreewayAI is property of DiligentlyAI, Inc. and is used under an MIT license.
 # by Ben Parfitt, Feb 2024
 
-def _format_prompt(prompt, **kwargs):
+def _format_prompt(prompt, variables):
 
     messages = []
     if "messages" in prompt:
-        messages = _format_messages(prompt, prompt["messages"], **kwargs)
+        messages = _format_messages(prompt, prompt["messages"], variables)
 
     if "prompt_template" in prompt:
         msg = {
-            "content": _format_template_string(prompt, prompt["prompt_template"], **kwargs),
+            "content": _format_template_string(prompt, prompt["prompt_template"], variables),
             "role": "user"
         }
         if len(messages):
@@ -22,16 +22,16 @@ def _format_prompt(prompt, **kwargs):
         
     return Prompt_Formatted(messages)
 
-def _format_messages(prompt, messages, **kwargs):
+def _format_messages(prompt, messages, variables):
 
     for message in messages:
-        message["content"] = _format_template_string(prompt, message["content"], **kwargs)
+        message["content"] = _format_template_string(prompt, message["content"], variables)
 
     return messages
 
-def read_and_format_prompt(system_id, systems_location, prompt_id, **kwargs):
+def read_and_format_prompt(system_id, systems_location, prompt_id, variables):
     prompt = _read_prompt_from_system_and_id(system_id, systems_location, prompt_id)
-    return _format_prompt(prompt, **kwargs)
+    return _format_prompt(prompt, variables)
 
 def main():
     print(read_and_format_prompt('example', 'better_template_id', type="none here", description="none that I know of"), end="\n\n")
