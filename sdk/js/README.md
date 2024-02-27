@@ -1,0 +1,1 @@
+The `javascript` version of the freewayai sdk.
