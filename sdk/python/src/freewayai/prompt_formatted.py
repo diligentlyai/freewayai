@@ -1,7 +1,34 @@
 from .prompt_messages_to_provider_format import convert_messages_to_format
+from .token_counting import count_messages_tokens
+from .utilities import _format_messages, _format_template_string
 
 class Prompt_Formatted:
-    def __init__(self, messages):
+    def __init__(self, template: dict, variables: dict):
+        self.template = template
+        self.variables = variables
+        self.messages = []
+        self._format_prompt()
+
+
+    def _format_prompt(self):
+
+        prompt = self.template
+        variables = self.variables
+
+        messages = []
+        if "messages" in prompt:
+            messages = _format_messages(prompt, prompt["messages"], variables)
+
+        if "prompt_template" in prompt:
+            msg = {
+                "content": _format_template_string(prompt, prompt["prompt_template"], variables),
+                "role": "user"
+            }
+            if len(messages):
+                messages.append(msg)
+            else:
+                messages = [msg]
+            
         self.messages = messages
 
     def __str__(self):
@@ -16,6 +43,19 @@ class Prompt_Formatted:
     def __list__(self):
         return self.messages
     
+    def count_tokens(self):
+        return count_messages_tokens(self.messages)
+    
+    def trim_tokens(self, max_tokens):
+        while self.count_tokens() > max_tokens:
+            for k, v in self.variables.items():
+                if len(v) < 100:
+                    continue
+                self.variables[k] = v[int(len(v)*0.1):]
+            self._format_prompt()
+
+        return self
+
     def add_context(self, context):
 
         # Check the type of context for either string or list

@@ -1,6 +1,7 @@
-from .prompt_template_format import read_and_format_prompt
 from .prompt_formatted import Prompt_Formatted
 from .database_query_template_format import read_and_format_query
+from .utilities import _read_prompt_from_system_and_id
+from .prompt_formatted import Prompt_Formatted
 
 class LLMSystem:
     def __init__(self, system_id, systems_location=None):
@@ -10,7 +11,8 @@ class LLMSystem:
             raise ValueError("PROMPT_SYSTEMS_LOCATION environment variable must be set or passed as initialization arg.")
         
     def get_formatted_prompt(self, prompt_id: str, variables: dict) -> Prompt_Formatted:
-        return read_and_format_prompt(self.system_id, self.systems_location, prompt_id, variables)
-        
+        prompt = _read_prompt_from_system_and_id(self.system_id, self.systems_location, prompt_id)
+        return Prompt_Formatted(prompt, variables)
+
     def get_formatted_query(self, query_id: str, variables: dict) -> str:
         return read_and_format_query(self.system_id, self.systems_location, query_id, variables)
