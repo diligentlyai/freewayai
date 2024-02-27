@@ -1,12 +1,12 @@
 [project]
 name = "freewayai"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = []
 authors = [
   { name="Ben Parfitt", email="ben@diligently.ai" },
   { name="Michael Cox", email="michael@diligently.ai" },
 ]
-description = "A library for building and deploying machine learning models"
+description = "A new open-standard specification for LLM-backed systems and an SDK for building on it"
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
