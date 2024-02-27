@@ -25,7 +25,7 @@ export OPENAI_API_KEY="<your api key>"
 ## Running the Application
 
 ```bash
-python -m message_builder
+python -m chatbot
 ```
 
 ## Project Structure
