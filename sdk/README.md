@@ -83,7 +83,7 @@ variables = {
   "question": input()
 }
 
-pirate_prompt = my_system.get_formatted_prompt("pirate_talk", **variables)
+pirate_prompt = my_system.get_formatted_prompt("pirate_talk", variables)
 formatted_pirate_prompt = pirate_prompt.to_openai()
 
 client = OpenAI()
