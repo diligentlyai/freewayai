@@ -1,0 +1,15 @@
+{
+    "templates": {
+        "get_similar_profile_id": {
+            "query_template_id": "get_similar_profile_id",
+            "search_query_template": "{new_profile}",
+            "result_count": 5,
+            "variables": [
+                {
+                    "name": "new_profile",
+                    "source": "llm"
+                }
+            ]
+        }
+    }
+}

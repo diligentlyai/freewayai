@@ -1,0 +1,26 @@
+{
+  "name": "outbound_sales",
+  "version": "1.0.0",
+  "description": "In this \"Outbound Sales\" example system, we are building a classic example of an LLM-backed RAG system. This is a system to generate outbound sales LinkedIn messages based on previous examples of outbound messages and the information about the customer.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "ts-node ./index.ts"
+  },
+  "author": "Ben Parfitt",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-fetch": "^2.6.11",
+    "dotenv": "^16.4.5",
+    "faiss-node": "^0.5.1",
+    "i": "^0.3.7",
+    "node-fetch": "^3.3.2",
+    "npm": "^10.4.0",
+    "openai": "^4.28.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
