@@ -2,7 +2,7 @@
     "templates": {
         "profile_extraction_prompt" : {
             "prompt_id": "profile_extraction_prompt",
-            "prompt_template": "You are going to see a raw text version of a linkedin profile. Your task is to extract the following information from the profile: Previous jobs. Current job. Education. Skills. Here is the raw profile: {raw_profile}. Information: ",
+            "prompt_template": "You are going to see a raw text version of a linkedin profile. Your task is to extract the following information from the profile: Full name. Previous jobs. Current job. Education. Skills. Here is the raw profile: {raw_profile}. Information: ",
             "variables": [
                 {
                     "name": "raw_profile",

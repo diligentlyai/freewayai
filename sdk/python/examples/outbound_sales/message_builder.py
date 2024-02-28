@@ -1,5 +1,5 @@
 import json
-from freewayai import LLMSystem
+from freewayai import LLMSystem, SystemLogger
 from sys_utilities import open_ai_chat_call, open_ai_embedding_call, make_faiss_index, search_faiss_index
 
 NEW_PROFILE_LOCATION = "data/new_profile_data.json"
@@ -10,6 +10,7 @@ def get_new_message(name: str) -> str:
     
     # Get LLMSystem
     llm_system = LLMSystem("message_builder", "system_configs/")
+    llm_logger = SystemLogger(llm_system)
 
     # Build FAISS database from profiles and messages
     with open(PROFILES_AND_MESSAGES_LOCATION, "r") as file:
@@ -22,13 +23,14 @@ def get_new_message(name: str) -> str:
     
     # Get raw profile for name
     with open(NEW_PROFILE_LOCATION, "r") as file:
-        new_profile = json.load(file)[name]
+        new_profile = json.load(file)[name]["raw_profile"]
 
     # Get key profile elements
-    extraction_prompt = llm_system.get_formatted_prompt("profile_extraction_prompt", dict(raw_profile=new_profile))
-    extraction_prompt = extraction_prompt.to_openai()
-    extracted_profile = open_ai_chat_call(extraction_prompt)
-
+    vars = dict(raw_profile=new_profile)
+    extraction_prompt = llm_system.get_formatted_prompt("profile_extraction_prompt", vars)
+    extraction_prompt_formatted = extraction_prompt.to_openai()
+    extracted_profile = open_ai_chat_call(extraction_prompt_formatted)
+    llm_logger.log_llm_interaction(prompt=extraction_prompt_formatted, prompt_id="profile_extraction_prompt", prompt_template=extraction_prompt, response=extracted_profile, model="openai.gpt-3.5-turbo-0125", variables=vars)
 
     # Get simillar profiles
     profile_query = llm_system.get_formatted_query("get_similar_profile_id", dict(new_profile=extracted_profile))
