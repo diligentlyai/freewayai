@@ -1,7 +1,7 @@
 import copy, json
 from .prompt_messages_to_provider_format import convert_messages_to_format
 from .token_counting import count_messages_tokens
-from .utilities import _format_messages, _format_template_string
+from .utilities import format_messages, format_template_string
 
 class Prompt_Formatted:
     def __init__(self, template: dict, variables: dict):
@@ -15,15 +15,12 @@ class Prompt_Formatted:
 
     def _format_prompt(self):
 
-        prompt = self.template
-        variables = self.variables
-
         messages = []
-        if "messages" in prompt:
-            messages = _format_messages(prompt, prompt["messages"], variables)
-        if "prompt_template" in prompt:
+        if "messages" in self.template:
+            messages = format_messages(self.template, self.template["messages"], self.variables)
+        if "prompt_template" in self.template:
             msg = {
-                "content": _format_template_string(prompt, prompt["prompt_template"], variables),
+                "content": format_template_string(self.template, self.template["prompt_template"], self.variables),
                 "role": "user"
             }
             
