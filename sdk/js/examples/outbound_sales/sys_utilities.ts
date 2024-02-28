@@ -6,9 +6,11 @@ const openai = new OpenAIApi({
 });
 
 async function open_ai_chat_call(messages: any, model: any = null) {
+
     const models = ["gpt-3.5-turbo-0125", "gpt-4-0125-preview"];
     if (!model) model = models[0];
-    const response = await openai.createCompletion({
+
+    const response = await openai.completions.create({
         model: model,
         messages: messages,
         temperature: 0.2,
@@ -32,9 +34,12 @@ async function open_ai_embedding_call(text: string, model = "text-embedding-3-sm
 async function make_faiss_index(embeddings: any) {
     const index = new IndexFlatL2(embeddings[0].length);
 
+    // TODO: Need help on this.
     // Convert to an array.
     const typedEmbedding = new Float32Array(embeddings);
-    index.add(typedEmbedding);
+    // index.add(typedEmbedding);
+    index.add(embeddings[0]);
+
     return index;
 }
 
@@ -47,8 +52,9 @@ async function search_faiss_index(index: any, dataset: any, query: any, k = 5) {
     // results = []
     // for _, i in indices_sorted_by_distance:
 
-    //     results.append(dataset[i])
+    // results.append(dataset[i])
     // return results
+    return [ { message: 'Placeholder Message'}];
 }
 
 export { open_ai_embedding_call, open_ai_chat_call, make_faiss_index, search_faiss_index }
