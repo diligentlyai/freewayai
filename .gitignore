@@ -1,3 +1,7 @@
+# Node Specific 
+node_modules
+
+# Python Specific
 build/
 .DS_Store
 

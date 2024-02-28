@@ -1,0 +1,72 @@
+{
+    "start_nodes": [
+        "user_query"
+    ],
+    "terminating_nodes": [
+        "query_answer_with_info"
+    ],
+    "inner_nodes": [
+        "clarity_check",
+        "get_related_data",
+        "information_extraction",
+        "follow_up_question"
+    ],
+    "connections": [
+            {
+                "from": "user_query",
+                "to": {
+                    "id": "clarity_check",
+                    "variable": "query"
+                }
+            },
+            {
+                "from": "user_query",
+                "to": {
+                    "id": "get_related_data",
+                    "variable": "query"
+                }
+            },
+            {
+                "from": "user_query",
+                "to": {
+                    "id": "information_extraction",
+                    "variable": "messages"
+                }
+            },
+            {
+                "from": "get_related_data",
+                "to": {
+                    "id": "information_extraction",
+                    "variable": "text"
+                }
+            },
+            {
+                "from": "user_query",
+                "to": {
+                    "id": "follow_up_question",
+                    "variable": "query"
+                }
+            },
+            {
+                "from": "follow_up_question",
+                "to": {
+                    "id": "get_related_data",
+                    "variable": "query"
+                }
+            },
+            {
+                "from": "information_extraction",
+                "to": {
+                    "id": "query_answer_with_info",
+                    "variable": "info"
+                }
+            },
+            {
+                "from": "user_query",
+                "to": {
+                    "id": "query_answer_with_info",
+                    "variable": "query"
+                }
+            }
+        ]
+    }

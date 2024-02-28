@@ -1,0 +1,15 @@
+{
+    "templates": {
+        "get_related_data": {
+            "query_template_id": "get_related_data",
+            "search_query_template": "{query}",
+            "result_count": 5,
+            "variables": [
+                {
+                    "name": "query",
+                    "source": "user"
+                }
+            ]
+        }
+    }
+}
