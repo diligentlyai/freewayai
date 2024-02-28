@@ -89,7 +89,7 @@ formatted_pirate_prompt = pirate_prompt.to_openai()
 client = OpenAI()
 completion = client.chat.completions.create(
     model="gpt-3.5-turbo-0125",
-    messages = messages,
+    messages = formatted_pirate_prompt,
     temperature=0.2
 )
 
