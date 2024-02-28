@@ -1,7 +1,7 @@
 [project]
 name = "freewayai"
-version = "0.1.1"
-dependencies = []
+version = "0.1.2"
+dependencies = ["tiktoken",]
 authors = [
   { name="Ben Parfitt", email="ben@diligently.ai" },
   { name="Michael Cox", email="michael@diligently.ai" },
