@@ -1,3 +1,4 @@
+import copy, json
 from .prompt_messages_to_provider_format import convert_messages_to_format
 from .token_counting import count_messages_tokens
 from .utilities import _format_messages, _format_template_string
@@ -18,16 +19,13 @@ class Prompt_Formatted:
         messages = []
         if "messages" in prompt:
             messages = _format_messages(prompt, prompt["messages"], variables)
-
         if "prompt_template" in prompt:
             msg = {
                 "content": _format_template_string(prompt, prompt["prompt_template"], variables),
                 "role": "user"
             }
-            if len(messages):
-                messages.append(msg)
-            else:
-                messages = [msg]
+            
+            messages.append(msg)
             
         self.messages = messages
 
@@ -47,12 +45,20 @@ class Prompt_Formatted:
         return count_messages_tokens(self.messages)
     
     def trim_tokens(self, max_tokens):
+        last_count = self.count_tokens()
         while self.count_tokens() > max_tokens:
             for k, v in self.variables.items():
+                
                 if len(v) < 100:
                     continue
-                self.variables[k] = v[int(len(v)*0.1):]
+                else:
+                    self.variables[k] = v[int(len(v)*0.1):]
+            
             self._format_prompt()
+
+            if self.count_tokens() == last_count:
+                raise ValueError("Could not trim tokens further")
+            last_count = self.count_tokens()
 
         return self
 

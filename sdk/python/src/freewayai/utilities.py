@@ -2,10 +2,15 @@ import json
 
 def _format_messages(prompt, messages, variables):
 
-    for message in messages:
-        message["content"] = _format_template_string(prompt, message["content"], variables)
+    formatted_messages = []
 
-    return messages
+    for message in messages:
+        formatted_messages.append({
+            "role": message["role"],
+            "content": _format_template_string(prompt, message["content"], variables)
+        })
+
+    return formatted_messages
 
 def _read_prompt_from_system_and_id(system_id, systems_location, prompt_id):
     with open(f'{systems_location}/{system_id}/prompt_templates.json') as f:
