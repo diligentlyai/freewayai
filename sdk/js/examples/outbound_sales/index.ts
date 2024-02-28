@@ -22,7 +22,7 @@ async function get_new_message(message: string) {
     }
 
     // Assuming make_faiss_index is a function that can take the embeddings array
-    // and possibly returns a Promise or a synchronous value depending on its implementation
+    // and possibly returns a Promise or a synchronous value depending on its implementation.
     const vectorDb: any = await make_faiss_index(textEmbeddings);
 
     // Get key profile elements.
@@ -48,39 +48,37 @@ async function get_new_message(message: string) {
     let top_2_sim_profiles_and_messages = similar_profiles_and_messages.slice(0, 2);
 
     // Get new message from top 2 similar profiles, description, and key profile elements
-    // let profile1 = top_2_sim_profiles_and_messages[0]["profile"];
-    // let profile2 = top_2_sim_profiles_and_messages[1]["profile"];
-    // let message1 = top_2_sim_profiles_and_messages[0]["message"];
-    // let message2 = top_2_sim_profiles_and_messages[1]["message"];
+    let profile1 = top_2_sim_profiles_and_messages[0]["profile"];
+    let profile2 = top_2_sim_profiles_and_messages[1]["profile"];
+    let message1 = top_2_sim_profiles_and_messages[0]["message"];
+    let message2 = top_2_sim_profiles_and_messages[1]["message"];
 
-    // let new_message_prompt = await llmSystem.get_formatted_prompt("write_new_message_prompt", { 
-    //     profile1: profile1, 
-    //     profile2: profile2, 
-    //     message1: message1, 
-    //     message2: message2, 
-    //     description: message_description, 
-    //     new_profile: extracted_profile 
-    // })
+    let new_message_prompt = await llmSystem.get_formatted_prompt("write_new_message_prompt", { 
+        profile1: profile1, 
+        profile2: profile2, 
+        message1: message1, 
+        message2: message2, 
+        description: message_description, 
+        new_profile: extracted_profile 
+    })
 
     // I want to add another few-shot example to the prompt as additional context (and to demo SDK functionality)
-    // let added_context = [
-    //     {
-    //         "role": "user",
-    //         "content": similar_profiles_and_messages[2]["profile"]
-    //     },
-    //     {
-    //         "role": "assistant",
-    //         "content": similar_profiles_and_messages[2]["message"]
-    //     }
-    // ]
-    // new_message_prompt = new_message_prompt.add_context(added_context);
-    // new_message_prompt = new_message_prompt.add_context("Replace 'Paddle' with 'FamilyFunLand'. ").to_openai();
+    let added_context = [
+        {
+            "role": "user",
+            "content": similar_profiles_and_messages[2]["profile"]
+        },
+        {
+            "role": "assistant",
+            "content": similar_profiles_and_messages[2]["message"]
+        }
+    ]
+    new_message_prompt = new_message_prompt.add_context(added_context);
+    new_message_prompt = new_message_prompt.add_context("Replace 'Paddle' with 'FamilyFunLand'. ").to_openai();
 
-    // new_message = open_ai_chat_call(new_message_prompt)
+    let new_message = open_ai_chat_call(new_message_prompt)
 
-    //return new_message
-
-    return 'A Message';
+    return new_message
 }
 
 (async () => {
