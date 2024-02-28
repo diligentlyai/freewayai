@@ -63,7 +63,7 @@ def get_new_message(name: str) -> str:
         }
     ]
     new_message_prompt = new_message_prompt.add_context(added_context)
-    
+    print(new_message_prompt.count_tokens())
     new_message_prompt = new_message_prompt.add_context("Replace 'Paddle' with 'FamilyFunLand'. ")
     
     new_message_prompt = new_message_prompt.to_openai()

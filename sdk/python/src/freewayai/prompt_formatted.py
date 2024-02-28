@@ -8,8 +8,10 @@ class Prompt_Formatted:
         self.template = template
         self.variables = variables
         self.messages = []
-        self._format_prompt()
 
+
+        self.added_context = []
+        self._format_prompt()
 
     def _format_prompt(self):
 
@@ -28,6 +30,10 @@ class Prompt_Formatted:
             messages.append(msg)
             
         self.messages = messages
+
+        if len(self.added_context) > 0:
+            for context in self.added_context:
+                self._add_context(context)
 
     def __str__(self):
         if len(self.messages) == 1:
@@ -57,7 +63,7 @@ class Prompt_Formatted:
             self._format_prompt()
 
             if self.count_tokens() == last_count:
-                raise ValueError("Could not trim tokens further")
+                raise ValueError(f"Could not trim tokens further (current token count: {self.count_tokens()}; max tokens: {max_tokens})")
             last_count = self.count_tokens()
 
         return self
@@ -74,6 +80,10 @@ class Prompt_Formatted:
         if type(context) != list:
             raise ValueError("Context must be either a string or list of message objects in OpenAI format")
 
+        self.added_context.append(context)
+        return self._add_context(context)
+
+    def _add_context(self, context):
         if len(self.messages) == 0:
             self.messages = context
         elif self.messages[0]["role"] == "system":
