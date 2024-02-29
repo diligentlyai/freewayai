@@ -1,7 +1,6 @@
 from .prompt_template import PromptTemplate
 from .database_query_template_format import read_and_format_query
 from .utilities import read_prompt_from_system_and_id
-from .prompt_template import PromptTemplate
 
 class LLMSystem:
     def __init__(self, system_id, systems_location=None):
