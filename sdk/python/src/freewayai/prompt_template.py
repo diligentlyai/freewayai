@@ -3,7 +3,7 @@ from .prompt_messages_to_provider_format import convert_messages_to_format
 from .token_counting import count_messages_tokens
 from .utilities import format_messages, format_template_string
 
-class Prompt_Formatted:
+class PromptTemplate:
     def __init__(self, template: dict, variables: dict):
         self.template = template
         self.variables = variables
