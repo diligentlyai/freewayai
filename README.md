@@ -22,4 +22,4 @@ There is an open source python sdk that can be installed from PyPi:
 pip install freewayai
 ```
 
-In the [sdk/examples/outbound_sales](https://github.com/diligentlyai/freewayai/tree/main/sdk/examples/outbound_sales) folder there is a reference implementation using the python sdk and the [FreewayAI spec](https://github.com/diligentlyai/freewayai/tree/main/sdk/examples/outbound_sales/system_configs/message_builder) to build a sample application.
+In the [sdk/examples/outbound_sales](https://github.com/diligentlyai/freewayai/tree/main/sdk/python/examples/outbound_sales) folder there is a reference implementation using the python sdk and the [FreewayAI spec](https://github.com/diligentlyai/freewayai/tree/main/sdk/python/examples/outbound_sales/system_configs/message_builder) to build a sample application.
