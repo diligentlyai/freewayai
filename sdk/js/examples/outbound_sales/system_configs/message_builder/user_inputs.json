@@ -1,0 +1,9 @@
+{
+    "_comment": "This is a spec for a data model for user inputs to a system.",
+    "inputs": {
+        "user_profile_raw_text" : {
+            "input_id": "user_profile_raw_text",
+            "description": "Raw text version of the user's profile."
+        }
+    }
+}

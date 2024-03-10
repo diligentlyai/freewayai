@@ -1,0 +1,52 @@
+{
+    "templates": {
+        "clarity_check": {
+            "prompt_id": "clarity_check",
+            "prompt_template": "Your task it to evaluate if the following query is clear and can easily be answered. If it will be difficult to answer, provide a follow-up question that would make it easier to answer. If the query is clear, simply respond with 'clear'. Query: {query}",
+            "variables": [
+                {
+                    "name": "query",
+                    "type": "user"
+                }
+            ]
+        },
+        "information_extraction": {
+            "prompt_id": "information_extraction",
+            "prompt_template": "Your task is to read the following text and extract any information relevant to the query. If the information is not present, respond with 'not present'. If the information is present, respond with the information. Text: {text}. Query: {query}. Response: ",
+            "variables": [
+                {
+                    "name": "text",
+                    "type": "database"
+                },
+                {
+                    "name": "query",
+                    "type": "user"
+                }
+            ]
+        },
+        "follow_up_question": {
+            "prompt_id": "follow_up_question",
+            "prompt_template": "Your task is to provide a follow-up question that would make it easier to answer the following query. Query: {query}. Response: ",
+            "variables": [
+                {
+                    "name": "query",
+                    "type": "user"
+                }
+            ]
+        },
+        "query_answer_with_info": {
+            "prompt_id": "query_answer_with_info",
+            "prompt_template": "Your task is to answer the following query using the information provided. Query: {query}. Information: {info}. Response: ",
+            "variables": [
+                {
+                    "name": "query",
+                    "type": "user"
+                },
+                {
+                    "name": "info",
+                    "type": "llm"
+                }
+            ]
+        }
+    }
+}
