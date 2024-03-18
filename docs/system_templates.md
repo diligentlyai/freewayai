@@ -13,7 +13,7 @@
 
 ## Properties
 
-<table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#_comment">_comment</a></td><td>String</td></tr><tr><td colspan="2"><a href="#start_nodes">start_nodes</a></td><td>Array</td></tr><tr><td colspan="2"><a href="#terminating_nodes">terminating_nodes</a></td><td>Array</td></tr><tr><td colspan="2"><a href="#connections">connections</a></td><td>Array</td></tr></tbody></table>
+<table class="jssd-properties-table"><thead><tr><th colspan="2">Name</th><th>Type</th></tr></thead><tbody><tr><td colspan="2"><a href="#_comment">_comment</a></td><td>String</td></tr><tr><td colspan="2"><a href="#start_nodes">start_nodes</a></td><td>Array</td></tr><tr><td colspan="2"><a href="#terminating_nodes">terminating_nodes</a></td><td>Array</td></tr><tr><td colspan="2"><a href="#inner_nodes">inner_nodes</a></td><td>Array</td></tr><tr><td colspan="2"><a href="#connections">connections</a></td><td>Array</td></tr></tbody></table>
 
 
 
@@ -87,6 +87,26 @@
 
 
 
+## inner_nodes
+
+
+<table class="jssd-property-table">
+  <tbody>
+    <tr><th>Type</th><td colspan="2">Array</td></tr>
+    <tr>
+      <th>Required</th>
+      <td colspan="2">No</td>
+    </tr>
+    <tr>
+      <th>Unique Items</th>
+      <td colspan="2">true</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
 ## connections
 
 
@@ -121,18 +141,6 @@
 
 <table class="jssd-property-table">
   <tbody>
-    <tr><th>Type</th><td colspan="2">Object</td></tr>
-    
-  </tbody>
-</table>
-
-
-
-### connections.to.id
-
-
-<table class="jssd-property-table">
-  <tbody>
     <tr><th>Type</th><td colspan="2">String</td></tr>
     
   </tbody>
@@ -141,16 +149,18 @@
 
 
 
-### connections.to.variable
+### connections.variables
 
 
 <table class="jssd-property-table">
   <tbody>
-    <tr><th>Type</th><td colspan="2">String</td></tr>
-    
+    <tr><th>Type</th><td colspan="2">Array</td></tr>
+    <tr>
+      <th>Unique Items</th>
+      <td colspan="2">true</td>
+    </tr>
   </tbody>
 </table>
-
 
 
 
@@ -192,6 +202,13 @@
             "minItems": 1,
             "uniqueItems": true
         },
+        "inner_nodes": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true
+        },
         "connections": {
             "type": "array",
             "items": {
@@ -201,19 +218,14 @@
                         "type": "string"
                     },
                     "to": {
-                        "type": "object",
-                        "properties": {
-                            "id": {
-                                "type": "string"
-                            },
-                            "variable": {
-                                "type": "string"
-                            }
+                        "type": "string"
+                    },
+                    "variables": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
                         },
-                        "required": [
-                            "id",
-                            "variable"
-                        ]
+                        "uniqueItems": true
                     }
                 },
                 "required": [
