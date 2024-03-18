@@ -24,6 +24,9 @@ jobs:
           source env/bin/activate
         working-directory: sdk/python
 
+      - name: Extract version from tag
+        run: echo "VERSION=${GITHUB_REF#refs/tags/python-v}" >> $GITHUB_ENV
+
       - name: Install build dependencies
         run: |
           source env/bin/activate
@@ -36,9 +39,12 @@ jobs:
           source env/bin/activate
           python -m build
         working-directory: sdk/python
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ env.VERSION }}
   
       - name: List files in the dist folder
         run: |
+          echo "Release version number is: $VERSION"
           ls ${{ github.workspace }}/sdk/python/dist
 
       - name: Upload distribution artifacts

@@ -1,6 +1,6 @@
 [project]
 name = "freewayai"
-version = "0.1.3"
+version = "0.1.4"
 dependencies = ["tiktoken",]
 authors = [
   { name="Ben Parfitt", email="ben@diligently.ai" },
@@ -14,6 +14,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dynamic=["version"]
 
 [project.urls]
 Homepage = "https://github.com/diligentlyai/freewayai"
@@ -21,10 +22,12 @@ Issues = "https://github.com/diligentlyai/freewayai/issues"
 
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["freewayai*"]
 exclude = ["freewayai.tests*"]
+
+[tool.setuptools_scm]
