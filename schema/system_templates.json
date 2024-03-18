@@ -25,6 +25,13 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "inner_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
     "connections": {
       "type": "array",
       "items": {
@@ -34,16 +41,14 @@
             "type": "string"
           },
           "to": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "variable": {
-                "type": "string"
-              }
+            "type": "string"
+          },
+          "variables": {
+            "type": "array",
+            "items": {
+              "type": "string"
             },
-            "required": ["id", "variable"]
+            "uniqueItems": true
           }
         },
         "required": ["from", "to"]
