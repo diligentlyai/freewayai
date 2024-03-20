@@ -1,0 +1,56 @@
+{
+    "system" : {
+        "test_id" : {
+            "inputs" : {
+                "user_input_id_1" : {
+                    "type" : "int",
+                    "value" : 1
+                },
+                "user_input_id_2" : {
+                    "type" : "string",
+                    "value" : "test"
+                },
+                "user_input_id_3" : {
+                    "type" : "file",
+                    "value" : "path/to/file.location"
+                },
+                "vector_db_location" : {
+                    "type" : "database",
+                    "value" : "path/to/vector.db"
+                }
+            },
+            "outputs" : {
+                "prompt_template_id_that_makes_final_output" : {
+                    "type" : "string",
+                    "value" : "test"
+                }
+            }
+        }
+    },
+    "prompts" : {
+        "prompt_template_id" : [
+            {
+                "variable_name" : {
+                    "type" : "int",
+                    "value" : 1
+                },
+                "variable_name_2" : {
+                    "type" : "string",
+                    "value" : "test"
+                }
+            }
+        ],
+        "prompt_template_id_that_makes_final_output" : [
+            {
+                "variable_name" : {
+                    "type" : "int",
+                    "value" : 1
+                },
+                "variable_name_2" : {
+                    "type" : "string",
+                    "value" : "test"
+                }
+            }
+        ]
+    }
+}
